@@ -1,17 +1,28 @@
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import {
+  Route, 
+  Routes
+} from 'react-router-dom';
+import pages from './components/pages';
+import Layout from './components/Layout';
+import Home from './components/pages/Home';
+import Bookings from './components/pages/Bookings';
+import ConfirmedBooking from './components/pages/Bookings/ConfirmedBooking';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Header></Header>
-      <Nav></Nav>
-      <Main></Main>
-      <Footer></Footer>
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path={pages.get('home').path} element={<Home />} />
+          <Route path={pages.get('bookings').path} element={<Bookings />} />
+          <Route 
+            path={pages.get('confirmedBooking').path} 
+            element={<ConfirmedBooking />} 
+          />
+        </Routes>
+      </Layout>
+    </>
   );
-}
+};
 
 export default App;
